@@ -103,7 +103,7 @@ a.ev-sec-btn:hover {
 .ev-margin-top {
 	margin-top: 30px;
 }
-.ev-header-container {
+.ev-header-container, .inner-fixed-header {
 	padding: 20px 0px 14px;
     position: fixed;
     z-index: 100;
@@ -111,9 +111,12 @@ a.ev-sec-btn:hover {
     top: 0;
     z-index: 999;
 }
+.inner-fixed-header{
+	background: #343434 !important;
+}
 
 .ev-header-container.sticky {
-	background: #fff !important;
+	background: #343434 !important;
     visibility: hidden;
     opacity: 0;
     -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.1);
@@ -142,6 +145,8 @@ a.ev-sec-btn:hover {
     -o-transform: translate3d(0, 0px, 0);
     transform: translate3d(0, 0px, 0);
 }
+
+
 .ev-menu-item {
 	list-style:none;
 	-webkit-margin-before: 10px;
@@ -159,13 +164,15 @@ a.ev-sec-btn:hover {
 	color: #fff;
 	font-size: 18px;
 }
-.ev-header-container.sticky .ev-menu-item li a {
-	color: #333333;
-	font-size: 18px;
+.ev-header-container.sticky .ev-menu-item li a, .inner-fixed-header .ev-menu-item li a {
+	color: #ffffff;
+	font-size: 17px;
+	font-weight: 500;
 } 
-.ev-header-container.sticky .ev-menu-item li a.ev-sec-btn {
-	background: #fada4d;
+.ev-header-container.sticky .ev-menu-item li a.ev-sec-btn, .inner-fixed-header .ev-menu-item li a.ev-sec-btn{
+	background: #ffffff;
 	color: #333333;
+	font-weight: 600;
 }
 .ev-company-logo-dark, .ev-header-container.sticky .ev-company-logo {
 	display: none;
@@ -403,6 +410,74 @@ a.ev-sec-btn:hover {
 	margin-bottom: 30px;
 }
 
+/*Vinod 05-09-18 */
+.ev-main-body{
+	padding-top: 120px;
+}
+.ev-listing-item-caption h3{
+	color: #2d2d2d;
+	padding-top: 20px;
+}
+.ev-listing-item-caption p{
+    font-size: 14px;
+    color: #737373;
+    overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.ev-list-item-wrapper a:hover{
+	text-decoration: none;
+}
+.ev-list-item-cta-btn{
+    width: auto !important;
+    padding: 8px 20px;
+    font-size: 13px;
+    margin-top: 10px;
+    color: #292929 !important;
+}
+.ev-center-listing-section{
+	padding: 120px 0 0px;
+}
+.no-padding{
+	padding: 0;
+}
+.ev-center-list-map-wrapper{
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0;
+}
+.ev-center-list-wrapper{
+	padding-bottom: 60px;
+}
+.fixedmap{
+    position: fixed;
+    top: 80px;
+    height: 100%;
+    right: 0;
+    z-index: -999;
+}
+.ev-list-CTA-section{
+	z-index: 9;
+	background: #fff;
+	padding: 60px 0;
+}
+.ev-list-CTA-btn-wrapper a{
+	font-size: 22px;
+    font-weight: 900;
+    color: #3c3c3c !important;
+    padding: 10px 40px;
+}	
+.ev-list-item-wrapper img{
+	min-height: 200px;
+    max-height: 200px;
+    width: 100%;
+}
+.ev-list-select-box{
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 3px solid #ececec;
+}
 @media(max-width: 575.98px) {
 	
 }
