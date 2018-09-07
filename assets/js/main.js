@@ -74,7 +74,7 @@ $( document ).ready(function() {
             success: function (result) {
                 console.log(result);
                 localStorage.setItem('citiesData', JSON.stringify(result));
-                window.location.assign("file:///C:/Users/Team%20Evoque/Desktop/my%20match%20box%20-%20Git/list.html")
+                window.location.assign("https://mymatchbox.netlify.com/list.html")
             },
             error: function () {
                 console.log("error");
