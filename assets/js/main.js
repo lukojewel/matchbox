@@ -4,8 +4,16 @@ $( document ).ready(function() {
     var featuredSpacesUrl = "http://mymatchbox.v1.idc.tarento.com/api/v2/featuredSpaces";
     var cityInventoryUrl = "http://mymatchbox.v1.idc.tarento.com/api/v2/getCityInventory";
 
+    var map;
+
+
+    /* Init select box*/
+    
+
     getRequest(featuredSpacesUrl, featuredSapces);
     getRequest(cityInventoryUrl, cityInventory);
+
+
 
     function getRequest(url,functionName){
         $.ajax({
@@ -43,6 +51,7 @@ $( document ).ready(function() {
 
             $("#ev-featured-wrapper").append(temp_html);
         }
+
     }
 
     function cityInventory(response){
@@ -56,32 +65,43 @@ $( document ).ready(function() {
         for (var i = response.data.inventories.length - 1; i >= 0; i--) {
             $('#space-type').append('<option value="'+response.data.inventories[i].roomType+'">'+response.data.inventories[i].roomType+'</option>');
         }
+        $('select').niceSelect();
     }
 
-    $("#ev-banner-find-btn").click(function() {
-        var tempSelectbox = $("#cities").find('option:selected'); 
-        var tempSelectboxAttrLat = tempSelectbox.attr("lat");
-        var tempSelectboxAttrLng = tempSelectbox.attr("lng");
+    // $("#ev-banner-find-btn").click(function() {
+    //     var tempSelectbox = $("#cities").find('option:selected'); 
+    //     var tempSelectboxAttrLat = tempSelectbox.attr("lat");
+    //     var tempSelectboxAttrLng = tempSelectbox.attr("lng");
 
-        $.ajax({
-            url: "http://mymatchbox.v1.idc.tarento.com/api/v2/getNearBySpace",
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            type: "POST",
-            dataType: "json",
-            data: {"lon": "77.63615519999996", "lat": "12.9265132"},
-            success: function (result) {
-                console.log(result);
-                localStorage.setItem('citiesData', JSON.stringify(result));
-                window.location.assign("https://mymatchbox.netlify.com/list.html")
-            },
-            error: function () {
-                console.log("error");
-            }
-        });
-    });
+    //     $.ajax({
+    //         url: "http://mymatchbox.v1.idc.tarento.com/api/v2/getNearBySpace",
+    //         headers: {
+    //             'Content-Type': 'application/x-www-form-urlencoded'
+    //         },
+    //         type: "POST",
+    //         dataType: "json",
+    //         data: {"lon": "77.63615519999996", "lat": "12.9265132"},
+    //         success: function (result) {
+    //             console.log(result);
+    //             localStorage.setItem('citiesData', JSON.stringify(result));
+    //             window.location.assign("https://mymatchbox.netlify.com/list.html")
+    //         },
+    //         error: function () {
+    //             console.log("error");
+    //         }
+    //     });
+    // });
 
+
+
+    var locations= [];
+
+    function initMap() {
+      var uluru = {lat: 12.8873182, lng: 77.6396559};
+      var map = new google.maps.Map(
+          document.getElementById('googleMap'), {zoom: 14, center: uluru});
+     var marker = new google.maps.Marker({position: uluru, map: map});
+    }
 
 
     if((localStorage.getItem('citiesData'))){
@@ -105,9 +125,65 @@ $( document ).ready(function() {
             '</div>';
 
             $("#ev-center-list").append(temp_html);
+
+
+            // var location = [ cityCentersData.spaces[i].name, response[i].Latitude, response[i].Longitude, response[i].VenueID ,response[i].Description, response[i].Images[0], response[i].Images[1], response[i].Street ];
+            // locations.push(location);
+
+
         }
         // localStorage.clear();
     }
+
+    var uluru = {lat: 12.8873182, lng: 77.6396559};
+
+    // Initialize and add the map
+    function initMap() {
+      // The location of Uluru
+      var uluru = {lat: 12.8873182, lng: 77.6396559};
+      // The map, centered at Uluru
+      var map = new google.maps.Map(
+          document.getElementById('map'), {zoom: 4, center: uluru});
+      // The marker, positioned at Uluru
+
+      var marker = new google.maps.Marker({position: uluru, map: map});
+    }
+
+    // map=new google.maps.Map(document.getElementById("googleMap"), {
+    //     zoom: 12,
+    //     center: new google.maps.LatLng( 12.8873182, 77.6396559),
+    //     mapTypeId: google.maps.MapTypeId.ROADMAP,
+    //     styles: [ {
+    //             "elementType": "labels",
+    //             "stylers": [ {
+    //                 "visibility": "off"
+    //             }]
+    //         }, {
+    //             "featureType": "administrative.land_parcel",
+    //             "stylers": [ {
+    //                 "visibility": "off"
+    //         }]
+    //         }, {
+    //             "featureType": "administrative.neighborhood",
+    //             "stylers": [ {
+    //                 "visibility": "off"
+    //         }]
+    //         }, {
+    //             "featureType": "poi.business",
+    //             "stylers": [ {
+    //                 "visibility": "off"
+    //             }]
+    //         }, {
+    //             "featureType": "poi.park",
+    //             "elementType": "labels.text",
+    //             "stylers": [
+    //             {
+    //             "visibility": "off"
+    //             }
+    //         ]}
+    //     ]
+    // });
+
     
 
 

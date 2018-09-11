@@ -26,6 +26,7 @@ p, a {
 }
 .ev-sec-txt {
 	font-size: 24px;
+	font-weight: 500;
 }
 h1, h2, h3, p {
 	width: 100%;
@@ -66,10 +67,10 @@ input[type=number]::-webkit-outer-spin-button {
 	font-size: 16px;
 	text-transform: uppercase;
     text-decoration: none !important;
-	background: #fbd90c;
+	background: #f5d453;
 	color: #000 !important;
 	display: inline-block;
-	padding: 15px 25px;
+	padding: 15px 30px;
 	border: none;
 	border-radius: 3px;
     box-sizing: border-box;
@@ -77,34 +78,18 @@ input[type=number]::-webkit-outer-spin-button {
 a.ev-primary-btn:hover {
 	background: #dec00b;
 }
-.ev-sec-btn {
-	display: inline-block;
-	padding: 2px 10px;
-	border: none;
-    box-sizing: border-box;
-    background: #fff;
-    color: #000 !important;
-    text-decoration: none !important;
-    border-radius: 3px;
-    font-weight: 700;
-}
-a.ev-sec-btn:hover {
-	background: #e8e8e8;
-}
 .ev-heading-separator {
-	background: #fbd90c;
+	background: #f5d453;
 	margin: 20px 0px 50px;
 	width: 50px;
 	height: 5px;
 	display: inline-block;
 }
-
-
 .ev-margin-top {
 	margin-top: 30px;
 }
 .ev-header-container, .inner-fixed-header {
-	padding: 20px 0px 14px;
+	padding: 20px 0px 20px;
     position: fixed;
     z-index: 100;
     width: 100%;
@@ -114,7 +99,6 @@ a.ev-sec-btn:hover {
 .inner-fixed-header{
 	background: #343434 !important;
 }
-
 .ev-header-container.sticky {
 	background: #343434 !important;
     visibility: hidden;
@@ -145,8 +129,6 @@ a.ev-sec-btn:hover {
     -o-transform: translate3d(0, 0px, 0);
     transform: translate3d(0, 0px, 0);
 }
-
-
 .ev-menu-item {
 	list-style:none;
 	-webkit-margin-before: 10px;
@@ -155,14 +137,31 @@ a.ev-sec-btn:hover {
 .ev-menu-item li {
 	float: left;
     position: relative;
-    margin: 0px 20px;
+    margin:6px 20px;
 }
 .ev-menu-item li:last-child {
 	margin-right: 0px;
+	margin-top: 0px;
 }
 .ev-menu-item li a {
-	color: #fff;
-	font-size: 18px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: .5px;
+}
+.ev-sec-btn {
+	display: inline-block;
+	padding: 5px 14px;
+	border: none;
+    box-sizing: border-box;
+    background: #fff;
+    color: #000 !important;
+    text-decoration: none !important;
+    border-radius: 3px;
+    font-weight: 700 !important;
+}
+a.ev-sec-btn:hover {
+	background: #e8e8e8;
 }
 .ev-header-container.sticky .ev-menu-item li a, .inner-fixed-header .ev-menu-item li a {
 	color: #ffffff;
@@ -230,14 +229,16 @@ a.ev-sec-btn:hover {
   width: 100%;
   position: relative;
   z-index: 10;
-  font-size: 16px;
+  font-size: 17px;
 }
 .ev-cus-dd .select, .ev-office-type .select{
   background-position:80% center !important;
 }
 .ev-cus-dd .select {
 	background:url('../img/maps-ico.png') no-repeat;
-	width: 121%;
+	/*width: 121%;*/
+
+	width: 100%;
 }
 .ev-office-type .select {
 	background:url('../img/space-ico.png') no-repeat;
@@ -478,6 +479,44 @@ a.ev-sec-btn:hover {
     background-color: rgba(255, 255, 255, 0.85);
     border: 3px solid #ececec;
 }
+.padding-right-none{
+	padding-right: 0;
+}
+.nice-select{
+	background-color: rgba(208, 208, 208, 0.85);
+	border-radius: 0;
+	border: 0;
+	height: 50px;
+    line-height: 50px;
+    font-size: 17px;
+    width: 100%;
+}
+.nice-select .current{
+    color: #000000;
+}
+.nice-select .list{
+	background-color: #efefef;
+	border-radius: 0;
+	border: 0;
+	color: #292929;
+	height: 200px;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.nice-select .list::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+.nice-select .list::-webkit-scrollbar{
+	width: 5px;
+	background-color: #F5F5F5;
+}
+.nice-select .list::-webkit-scrollbar-thumb{
+	background-color: #fbd90c;
+	border: 1px solid #ddd;
+}
+
 @media(max-width: 575.98px) {
 	
 }
