@@ -40,7 +40,11 @@ $( document ).ready(function() {
             '<div class="col-md-4 col-sm-6 col-12 ev-margin-top">'+
                 '<div class="ev-fea-item">'+
                     '<a href="#">'+
-                        '<img src="'+response.data[i].images[0].url+'"  width="100%" height="216" class="img-fluid" alt="Image | Featured Space 1"/>'+
+                       ' <div class="ev-fea-image-overlay-wrapper">'+
+                            '<img src="'+response.data[i].images[0].url+'"  width="100%" height="216" class="img-fluid" alt="Image | Featured Space 1"/>'+
+                            '<div class="ev-fea-image-overlay">'+
+                            '</div>'+
+                        '</div>'+
                         '<div class="carousel-caption text-left">'+
                             '<p>'+response.data[i].name+'</p>'+
                             '<span>Learn More</span>'+
