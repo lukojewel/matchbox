@@ -591,6 +591,9 @@ a.ev-sec-btn:hover {
 .ev-margin-top-double {
 	margin-top: 30px;
 }
+.ev-mob-show{
+	display: none;
+}
 @media screen and (max-width: 600px) {
   .topnav a:not(:first-child) {display: none;}
   .topnav a.icon {
@@ -600,7 +603,7 @@ a.ev-sec-btn:hover {
 }
 
 @media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {position: fixed;}
   .topnav.responsive .icon {
     position: absolute;
     right: 0;

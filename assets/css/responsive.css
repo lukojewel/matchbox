@@ -3,10 +3,10 @@
 		font-size: 26px;
 	}
 	.ev-sec-txt{
-		font-size: 18px;
+		font-size: 16px;
 	}
 	.ev-caption-container h1{
-		font-size: 28px;
+		font-size: 26px;
 	}
 	.ev-mob-hide{
 		display: none;
@@ -140,5 +140,8 @@
 	}
 }
 @media(min-width:991.98px) and (max-width: 1199.98px) {
+	.ev-mob-show{
+		display: none;
+	}
 
 }
