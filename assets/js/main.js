@@ -15,6 +15,9 @@ $( document ).ready(function() {
 
 
 
+
+
+
     function getRequest(url,functionName){
         $.ajax({
             url: url,
@@ -63,11 +66,11 @@ $( document ).ready(function() {
         spaceTypeData = response.data.inventories;
 
         for (var i = response.data.cities.length - 1; i >= 0; i--) {
-            $('#cities').append('<option lat="'+response.data.cities[i].lat+'" lng="'+response.data.cities[i].lng+'" value="'+response.data.cities[i].cityValue+'">'+response.data.cities[i].city+'</option>');
+            $('.cities').append('<option lat="'+response.data.cities[i].lat+'" lng="'+response.data.cities[i].lng+'" value="'+response.data.cities[i].cityValue+'">'+response.data.cities[i].city+'</option>');
         }
 
         for (var i = response.data.inventories.length - 1; i >= 0; i--) {
-            $('#space-type').append('<option value="'+response.data.inventories[i].roomType+'">'+response.data.inventories[i].roomType+'</option>');
+            $('.space-type').append('<option value="'+response.data.inventories[i].roomType+'">'+response.data.inventories[i].roomType+'</option>');
         }
         $('select').niceSelect();
     }
