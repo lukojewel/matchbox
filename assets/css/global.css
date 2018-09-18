@@ -616,7 +616,7 @@ a.ev-sec-btn:hover {
   }
 }
 
-/*About us*/
+/*About us - Page*/
 .ev-fea-whoVR-container{
 	padding: 120px 0;
 }
@@ -745,8 +745,78 @@ a.ev-sec-btn:hover {
 .ev-leader-team-section{
 	padding: 100px 0;
 }
-
 .ev-gallery-section{
 	background: #fff;
 	padding: 0 0 60px;
+}
+
+/*Hot Desk - Page*/
+.ev-hotdsk-sec-liner{
+	color: #f5d453;
+}
+.ev-hotdsk-descp{
+	line-height: 220%;
+	font-size: 15px;
+	color: #797979;
+	padding-bottom: 60px;
+}
+.ev-hotdsk-suit-item{
+    position: relative;
+    top: 6px;
+    font-size: 15px;
+    font-weight: 500;
+}
+.ev-hotdsk-suit-item-icon{
+	width: 26px;
+    margin-right: 0;
+}
+.ev-hotdsk-suitable-wrapper h2{
+	padding-bottom: 20px;
+}
+.ev-hotdsk-suit-item-wrapper{
+	padding: 20px 0;
+	margin: 0;
+}
+.ev-hotdsk-adv{
+	background: #ececec;
+}
+.ev-hotdsk-adv img{
+	padding: 5px;
+}
+.ev-hotdsk-adv h4{
+	position: relative;
+    top: 24px;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+}
+.ev-hotdsk-faq-item{
+	padding-bottom: 30px;
+    color: #4e4e4e;
+}
+.ev-hotdsk-faq-section .ev-heading-separator{
+	margin-bottom: 40px;
+}
+.ev-hotdsk-faq-section{
+	padding: 60px;
+}
+.ev-hotdsk-discvr-banner-section{
+    padding: 160px 0;
+}
+.ev-hotdsk-other-dsk-section .carousel-caption{
+    bottom: 0px;
+    left: 10%;
+}
+.ev-hotdsk-other-dsk-section p{
+	font-weight: 600;
+}
+.ev-hotdsk-other-dsk-section span{
+	color: #f5d453;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.ev-hotdsk-other-dsk-section{
+	padding: 60px 0;
+}
+.ev-hotdsk-other-dsk-section .ev-heading-separator{
+	margin-bottom: 20px;
 }
