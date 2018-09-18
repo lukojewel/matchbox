@@ -820,3 +820,8 @@ a.ev-sec-btn:hover {
 .ev-hotdsk-other-dsk-section .ev-heading-separator{
 	margin-bottom: 20px;
 }
+
+/*Private Studio - Page*/
+.ev-private-cta-banner-section{
+	background:url('../img/private-cta-banner.jpg') top left no-repeat;
+}
