@@ -574,7 +574,7 @@ a.ev-sec-btn:hover {
 }
 
 .topnav .active {
-  background-color: #4CAF50;
+  background-color: #f5d453;
   color: white;
 }
 
@@ -614,4 +614,139 @@ a.ev-sec-btn:hover {
     display: block;
     text-align: left;
   }
+}
+
+/*About us*/
+.ev-fea-whoVR-container{
+	padding: 120px 0;
+}
+.ev-fea-whoVR-item-p{
+    color: #696969;
+    font-size: 15px;
+    line-height: 170%;
+    padding-right: 60px;
+}
+.ev-fea-whatVDo-container{
+	padding: 120px 0;
+	background: #e5e5e5;
+}
+.ev-fea-whatVDo-container .ev-fea-whoVR-item-p{
+	padding: 0;
+}
+.ev-fea-whoVR-item-wrapper{
+	padding-top: 30px;
+}
+.ev-fea-whoVR-container .ev-heading-separator{
+	margin-bottom: 20px;
+}
+.ev-fea-whatVDo-item-wrapper{
+	padding: 30px 0 0 30px;
+}
+
+/* --- --- Advantages --- ---*/
+.ev-adv-section .ev-heading-separator{
+	text-align: left;
+}
+.ev-adv-section{
+	padding: 60px 0;
+}
+.ev-adv-head{
+	font-size: 15px;
+    font-weight: 600;
+}
+.ev-adv-body{
+	color: #676767;
+}
+.ev-adv-sec-row{
+	padding: 60px 0;
+}
+
+/* --- --- Contact us CTA banner --- ---*/
+.ev-cta-banner-section{
+	background-size: cover;
+    background: url(../img/about-CTA-banner.png)  left no-repeat;
+}
+.ev-heading-separator-wrapper{
+    text-align: center;
+}
+.ev-heading-separator-wrapper .ev-heading-separator{
+	margin: 30px 0;
+}
+.ev-cta-banner-section span{
+    font-size: 46px;
+    font-weight: 900;
+}
+.ev-cta-banner-item p{
+	font-size: 20px;
+}
+.ev-cta-banner-item{
+	text-align: center;
+}
+.ev-heading-separator-wrapper{
+	justify-content: center!important;
+}
+.ev-cta-banner-section .ev-primary-btn{
+	font-weight: 800;
+    font-size: 20px;
+}
+
+/* --- --- Meet the Leadership Team --- ---*/
+.ev-meet-team-head-wrapper{
+	text-align: center;
+}
+.ev-team-member-img{
+	border-radius: 50%;
+}
+.ev-team-item-img-wrapper{
+	text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 10px;
+    border-right: 4px solid #b5b5b5;
+}
+.ev-team-item-wrapper{
+    background: #e6e6e6;
+    margin: 10px 0 20px 0;
+    padding: 20px;
+}
+.ev-team-item-img-wrapper h6{
+	padding: 5px 0 0;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+}
+.ev-team-item-img-wrapper p{
+    font-size: 13px;
+    color: #737373;
+}
+.ev-team-item-img-wrapper img{
+	padding: 10px;
+}
+.ev-team-item-right-wrapper{
+    padding: 20px 10px 20px 20px;
+}
+.ev-team-member-img-descp{
+    margin-bottom: 30px;
+    color: #484848;
+}
+.ev-team-member-connect-head{
+    margin-bottom: 12px;
+    color: #484848;
+}
+.ev-team-member-social-wrapper a img{
+    width: 30px;
+    padding: 2px;
+
+}
+.ev-team-member-social-wrapper a:hover{
+	opacity: .5;
+}
+.ev-leader-team-section{
+	padding: 100px 0;
+}
+
+.ev-gallery-section{
+	background: #fff;
+	padding: 0 0 60px;
 }
