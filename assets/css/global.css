@@ -833,3 +833,7 @@ a.ev-sec-btn:hover {
 .ev-meeting-cta-banner-section{
 	background:url('../img/meeting-room-cta-banner.jpg') top left no-repeat;
 }
+/*Event space - Page*/
+.ev-event-cta-banner-section{
+	background:url('../img/event-space-cta-banner.jpg') top left no-repeat;
+}
