@@ -829,3 +829,7 @@ a.ev-sec-btn:hover {
 .ev-dedicated-cta-banner-section{
 	background:url('../img/dedicated-desk-cta-banner.jpg') top left no-repeat;
 }
+/*Meeting Rooms - Page*/
+.ev-meeting-cta-banner-section{
+	background:url('../img/meeting-room-cta-banner.jpg') top left no-repeat;
+}
