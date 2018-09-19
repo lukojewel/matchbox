@@ -837,3 +837,10 @@ a.ev-sec-btn:hover {
 .ev-event-cta-banner-section{
 	background:url('../img/event-space-cta-banner.jpg') top left no-repeat;
 }
+/*Privacy Policy - Page*/
+.ev-privacy-content{
+	padding-bottom: 0;
+}
+.ev-privacy-content b{
+	color: #4e4e4e;
+}
