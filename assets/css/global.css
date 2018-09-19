@@ -825,3 +825,7 @@ a.ev-sec-btn:hover {
 .ev-private-cta-banner-section{
 	background:url('../img/private-cta-banner.jpg') top left no-repeat;
 }
+/*Dedicated desk - Page*/
+.ev-dedicated-cta-banner-section{
+	background:url('../img/dedicated-desk-cta-banner.jpg') top left no-repeat;
+}
