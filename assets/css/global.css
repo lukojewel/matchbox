@@ -925,3 +925,50 @@ a.ev-sec-btn:hover {
 .ev-contact-map-wrapper #googleMap{
 	border:1px solid;
 }
+/*Space detail - Page*/
+.ev-space-detail-head{
+	padding-bottom: 20px;
+    text-align: center;
+}
+.ev-space-detail-form-wrapper input{
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+    border: 0;
+    padding: 18px;
+    font-size: 16px;
+}
+.ev-space-detail-form-wrapper input[type="text"]::placeholder{
+    color: #1d1d1d;
+}
+.ev-space-detail-btn-wrapper{
+	text-align: center;
+}
+.ev-space-detail-form-wrapper{
+    padding: 30px 20px;
+    background: #e8e8e8;
+}
+.ev-space-detail-form-wrapper .nice-select{
+    margin-bottom: 20px;
+    background: white;
+    font-size: 16px;
+}
+.ev-space-detail-form-wrapper  .ev-primary-btn{
+	padding: 10px 30px;
+}
+.ev-space-detail-descp-section .ev-hotdsk-descp{
+	padding-right: 40px;
+	line-height: 180%;
+    font-size: 14px;
+}
+.ev-space-detail-form-two-liner{
+    padding: 30px 0 10px;
+    color: #505050;
+}
+.ev-space-detail-form-two-liner a{
+    text-decoration: underline;
+    color: #505050;
+}
+.ev-space-detail-form-two-liner a:hover{
+	opacity: .5;
+}

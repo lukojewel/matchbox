@@ -91,13 +91,37 @@ $( document ).ready(function() {
     //         success: function (result) {
     //             console.log(result);
     //             localStorage.setItem('citiesData', JSON.stringify(result));
-    //             window.location.assign("https://mymatchbox.netlify.com/list.html")
+    //             // window.location.assign("file:///C:/Users/Team%20Evoque/Desktop/my%20match%20box%20-%20Git/list.html")
     //         },
     //         error: function () {
     //             console.log("error");
     //         }
     //     });
     // });
+
+    $("#ev-banner-find-btn").click(function() {
+        var tempSelectbox = $("#cities").find('option:selected'); 
+        var tempSelectboxAttrLat = tempSelectbox.attr("lat");
+        var tempSelectboxAttrLng = tempSelectbox.attr("lng");
+
+        $.ajax({
+            url: "http://mymatchbox.v1.idc.tarento.com/api/v2/getAvailableSpaces",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "POST",
+            dataType: "json",
+            data: {"lon": "77.63615519999996", "lat": "12.9265132"},
+            success: function (result) {
+                console.log(result);
+                localStorage.setItem('citiesData', JSON.stringify(result));
+                // window.location.assign("file:///C:/Users/Team%20Evoque/Desktop/my%20match%20box%20-%20Git/list.html")
+            },
+            error: function () {
+                console.log("error");
+            }
+        });
+    });
 
 
 
