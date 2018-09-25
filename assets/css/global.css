@@ -972,3 +972,9 @@ a.ev-sec-btn:hover {
 .ev-space-detail-form-two-liner a:hover{
 	opacity: .5;
 }
+.ev-space-detail-amenities-section{
+	background: #ececec;
+}
+.ev-space-detail-amenities-section .ev-adv-sec-row{
+	padding: 25px 0;
+}
