@@ -3,6 +3,7 @@ $( document ).ready(function() {
     var featuredSpacesData, cityInventoryData, spaceTypeData;
     var featuredSpacesUrl = "http://mymatchbox.v1.idc.tarento.com/api/v2/featuredSpaces";
     var cityInventoryUrl = "http://mymatchbox.v1.idc.tarento.com/api/v2/getCityInventory";
+    var testimonialUrl = "http://mymatchbox.v1.idc.tarento.com/api/v2/testimonial";
 
     var map;
 
@@ -12,6 +13,7 @@ $( document ).ready(function() {
 
     getRequest(featuredSpacesUrl, featuredSapces);
     getRequest(cityInventoryUrl, cityInventory);
+    getRequest(testimonialUrl, testimonial);
 
 
 
@@ -59,18 +61,43 @@ $( document ).ready(function() {
             $("#ev-featured-wrapper").append(temp_html);
         }
 
+
     }
+
+
+    function testimonial(response){
+        testimonialData= response;
+        for (var i = response.data.length - 1; i >= 0; i--) {
+            var temp_html =  
+            
+            '<div class="carousel-item active">'+
+                '<div class="row justify-content-center">'+
+                    '<div class="col-sm-8 text-center">'+
+                        '<p class="ev-testimonial">My matchbox is the best place to book meeting rooms and short term spaces online. The platform is very easy and can be used book spaces on a daily basis.</p>'+
+                        '<img class="ev-img" src="assets/img/tes-dummy-img.png"  width="86" height="86" alt="Image | User Name"/>'+
+                        '<p class="ev-name">ELON MUSK</p>'+
+                        '<p class="ev-company">Founder, The Boring Company</p>'+
+                    '</div>'+
+                '</div>'+
+            '</div>';
+
+            $("#testimonials").append(temp_html);
+        }
+
+
+    }
+
 
     function cityInventory(response){
         cityInventoryData= response.data.cities;
         spaceTypeData = response.data.inventories;
 
         for (var i = response.data.cities.length - 1; i >= 0; i--) {
-            $('.cities').append('<option lat="'+response.data.cities[i].lat+'" lng="'+response.data.cities[i].lng+'" value="'+response.data.cities[i].cityValue+'">'+response.data.cities[i].city+'</option>');
+            $('#cities').append('<option lat="'+response.data.cities[i].lat+'" lng="'+response.data.cities[i].lng+'" value="'+response.data.cities[i].cityValue+'">'+response.data.cities[i].city+'</option>');
         }
 
         for (var i = response.data.inventories.length - 1; i >= 0; i--) {
-            $('.space-type').append('<option value="'+response.data.inventories[i].roomType+'">'+response.data.inventories[i].roomType+'</option>');
+            $('#space-type').append('<option value="'+response.data.inventories[i].roomType+'">'+response.data.inventories[i].roomType+'</option>');
         }
         $('select').niceSelect();
     }
