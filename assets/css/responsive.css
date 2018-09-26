@@ -99,6 +99,20 @@
 	.ev-menu-item li a, .ev-menu-item li {
 		font-size: 15px;
 	}
+    .ev-adv-icon{
+        /*width: 10% !important;*/
+        margin-bottom: 20px !important;
+        /*margin-top: 20px !important;*/
+    }
+    .nv-leftmargin-0{
+        padding-left: 0px !important;
+    }
+    .ev-top-10-margin{
+        margin-top: 20px;
+    }
+    .ev-adv-body-wrap{
+        margin-left: 20px !important;
+    }
 	.ev-main-footer {
 		padding: 30px 0px 0px;
 		padding-left: 15px;
@@ -141,6 +155,10 @@
 	.ev-heading-separator {
 		margin: 20px 0px 10px;
 	}
+    .ev-hotdsk-suit-item{
+        top:0px !important;
+        left:10px;
+    }
 }
 @media(min-width:991.98px) and (max-width: 1199.98px) {
 	.ev-mob-show{

@@ -24,7 +24,11 @@ h1, h2, h3 {
 p, a {
 	font-size:14px;
 }
-
+#map {
+  height: 400px;
+  width: 100%;
+  background-color: grey;
+}
 .ev-sec-txt {
 	font-size: 24px;
 	font-weight: 500;
