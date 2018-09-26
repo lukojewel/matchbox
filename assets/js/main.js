@@ -4,6 +4,8 @@ $( document ).ready(function() {
     var featuredSpacesUrl = "http://mymatchbox.v1.idc.tarento.com/api/v2/featuredSpaces";
     var cityInventoryUrl = "http://mymatchbox.v1.idc.tarento.com/api/v2/getCityInventory";
     var testimonialUrl = "http://mymatchbox.v1.idc.tarento.com/api/v2/testimonial";
+    var testimonialUrl = "http://mymatchbox.v1.idc.tarento.com//api/v2/getAvailableSpaces";
+
 
     var map;
 
@@ -102,29 +104,29 @@ $( document ).ready(function() {
         $('select').niceSelect();
     }
 
-    // $("#ev-banner-find-btn").click(function() {
-    //     var tempSelectbox = $("#cities").find('option:selected'); 
-    //     var tempSelectboxAttrLat = tempSelectbox.attr("lat");
-    //     var tempSelectboxAttrLng = tempSelectbox.attr("lng");
+    $("#ev-banner-find-btn").click(function() {
+        var tempSelectbox = $("#cities").find('option:selected'); 
+        var tempSelectboxAttrLat = tempSelectbox.attr("lat");
+        var tempSelectboxAttrLng = tempSelectbox.attr("lng");
 
-    //     $.ajax({
-    //         url: "http://mymatchbox.v1.idc.tarento.com/api/v2/getNearBySpace",
-    //         headers: {
-    //             'Content-Type': 'application/x-www-form-urlencoded'
-    //         },
-    //         type: "POST",
-    //         dataType: "json",
-    //         data: {"lon": "77.63615519999996", "lat": "12.9265132"},
-    //         success: function (result) {
-    //             console.log(result);
-    //             localStorage.setItem('citiesData', JSON.stringify(result));
-    //             // window.location.assign("file:///C:/Users/Team%20Evoque/Desktop/my%20match%20box%20-%20Git/list.html")
-    //         },
-    //         error: function () {
-    //             console.log("error");
-    //         }
-    //     });
-    // });
+        $.ajax({
+            url: "http://mymatchbox.v1.idc.tarento.com/api/v2/getNearBySpace",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "POST",
+            dataType: "json",
+            data: {"lon": "77.63615519999996", "lat": "12.9265132"},
+            success: function (result) {
+                console.log(result);
+                localStorage.setItem('citiesData', JSON.stringify(result));
+                // window.location.assign("file:///C:/Users/Team%20Evoque/Desktop/my%20match%20box%20-%20Git/list.html")
+            },
+            error: function () {
+                console.log("error");
+            }
+        });
+    });
 
     $("#ev-banner-find-btn").click(function() {
         var tempSelectbox = $("#cities").find('option:selected'); 
@@ -143,12 +145,42 @@ $( document ).ready(function() {
                 console.log(result);
                 localStorage.setItem('citiesData', JSON.stringify(result));
                 // window.location.assign("file:///C:/Users/Team%20Evoque/Desktop/my%20match%20box%20-%20Git/list.html")
+                window.location.assign("file:///E:/matchbox-master/matchbox/list.html")
+
             },
             error: function () {
                 console.log("error");
             }
         });
     });
+
+
+    // =============================list page search api call==========================
+
+
+    // $("#cities").change(function() {
+    //     var tempSelectbox = $("#cities").find('option:selected'); 
+    //     var tempSelectboxAttrLat = tempSelectbox.attr("lat");
+    //     var tempSelectboxAttrLng = tempSelectbox.attr("lng");
+
+    //     $.ajax({
+    //         url: "http://mymatchbox.v1.idc.tarento.com//api/v2/getAvailableSpaces",
+    //         headers: {
+    //             'Content-Type': 'application/x-www-form-urlencoded'
+    //         },
+    //         type: "POST",
+    //         dataType: "json",
+    //         data: {"capacity":{"min":"1","max":"1"},"lon":"77.63615519999996","lat":"12.9265132","etime":"05:00 PM","stime":"09:00 AM","roomType":"Hot Desk","timeType":"undefined","city":"Bangalore","date":"undefined","timeZoneOffset":-330,"fromDate":"08/10/2018","endDate":"08/11/2018","excludeHoliday":"true","excludeSunday":"true"} Meeting Room {"capacity":{"min":"03","max":"8"},"lon":"77.63615519999996","lat":"12.9265132","etime":"Thu, 10 Aug 2018 06:30:00 GMT","stime":"Thu, 10 Aug 2018 03:30:00 GMT","roomType":"Meeting Room","timeType":"undefined","city":"Bangalore","date":"08/09/2018","timeZoneOffset":null,"fromDate":"undefined","endDate":"undefined"} Board Room {"capacity":{"min":"03","max":"8"},"lon":"77.63615519999996","lat":"12.9265132","etime":"Thu, 10 Aug 2018 06:30:00 GMT","stime":"Thu, 10 Aug 2018 03:30:00 GMT","roomType":"Board Room","timeType":"undefined","city":"Bangalore","date":"08/09/2018","timeZoneOffset":null,"fromDate":"undefined","endDate":"undefined"} Training Room {"capacity":{"min":"11","max":"20"},"lon":"77.63615519999996","lat":"12.9265132","etime":"06:00 PM","stime":"09:00 AM","roomType":"Training Room","timeType":"undefined","place":"1st Block (Koramangala)","date":"undefined","timeZoneOffset":-330,"fromDate":"08/09/2018","endDate":"08/10/2018","excludeHoliday":"true","excludeSunday":"true"},
+    //         success: function (result) {
+    //             console.log(result);
+    //             // localStorage.setItem('citiesData', JSON.stringify(result));
+    //             // window.location.assign("file:///C:/Users/Team%20Evoque/Desktop/my%20match%20box%20-%20Git/list.html")
+    //         },
+    //         error: function () {
+    //             console.log("error");
+    //         }
+    //     });
+    // });
 
 
 

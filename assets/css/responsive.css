@@ -87,6 +87,9 @@
 	.ev-caption-container {
 		left: 6px;
 	}
+    .ev-contact-map-wrapper {
+         padding: 0 10px 0 10px !important; 
+    }
 	.ev-menu-item {
 		margin-top: 6px;
 	}
