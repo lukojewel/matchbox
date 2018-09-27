@@ -24,10 +24,18 @@ h1, h2, h3 {
 p, a {
 	font-size:14px;
 }
+.ev-map-infowindow{
+    width: 100%;
+    height: 200px;
+}
 .ev-sec-txt {
 	font-size: 24px;
 	font-weight: 500;
 }
+/*#map {
+    height: 600px;
+    width: 200px;
+}*/
 h1, h2, h3, p {
 	width: 100%;
 }
@@ -275,6 +283,7 @@ a.ev-sec-btn:hover {
 	padding: 60px 0px 65px;
 	background:url('../img/promo-bg.png') top left repeat;
 	position: relative;
+    /*margin-top: 400px;*/
 }
 .ev-promo-container h2, .ev-partners-container h2 {
 	color: #fff;
