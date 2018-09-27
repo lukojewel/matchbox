@@ -71,7 +71,9 @@ $( document ).ready(function() {
         $('select').niceSelect();
     }
 
-    $("#ev-banner-find-btn").click(function() {
+    $("#ev-banner-find-btn").click(function(event) {
+        event.preventDefault();
+
         var tempSelectbox = $("#cities").find('option:selected'); 
         var tempSelectboxAttrLat = tempSelectbox.attr("lat");
         var tempSelectboxAttrLng = tempSelectbox.attr("lng");
@@ -88,10 +90,10 @@ $( document ).ready(function() {
                 console.log(result);
                 console.log("Inside")
                 localStorage.setItem('citiesData', JSON.stringify(result));
-                window.location.assign("file:///C:/Users/Team%20Evoque/Desktop/my%20match%20box%20-%20Git/list.html")
+                window.location.assign("file:///E:/matchbox-master/matchbox/list.html")
             },
-            error: function () {
-                console.log("error");
+            error: function (error) {
+                console.log("error",error);
             }
         });
     });

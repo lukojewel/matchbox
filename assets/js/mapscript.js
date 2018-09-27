@@ -57,12 +57,10 @@ function initMap() {
 	}
      if((localStorage.getItem('citiesData'))){
         var cityCentersmapData = JSON.parse((localStorage.getItem('citiesData')));
-        for (i = 0; i < cityCentersmapData.spaces.length; i++) {
             console.log('cities data from map.js',cityCentersmapData);
 
-            var mapdata = [cityCentersmapData.spaces[i].loc ];
+            var mapdata = [cityCentersmapData.spaces[i].loc[0] ];
             mapdata.push(mapdata);
-        }
         console.log('location data are::::',mapdata);
 
     }
