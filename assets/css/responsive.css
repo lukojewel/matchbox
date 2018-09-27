@@ -32,6 +32,10 @@
 	.ev-find-btn-wrapper .ev-primary-btn{
 	    margin-top: 20px;
 	}
+    .nice-select{
+        width: 95% !important;
+        margin-left: 15px !important;
+    }
 	.img-fluid{
 		max-height: none;
 		height: auto;
@@ -106,6 +110,10 @@
     }
     .nv-leftmargin-0{
         padding-left: 0px !important;
+    }
+     .nice-select{
+        width: 97% !important;
+        margin-left: 15px !important;
     }
     .ev-top-10-margin{
         margin-top: 20px;

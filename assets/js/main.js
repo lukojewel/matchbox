@@ -3,9 +3,6 @@ $( document ).ready(function() {
     var featuredSpacesData, cityInventoryData, spaceTypeData;
     var featuredSpacesUrl = "http://mymatchbox.v1.idc.tarento.com/api/v2/featuredSpaces";
     var cityInventoryUrl = "http://mymatchbox.v1.idc.tarento.com/api/v2/getCityInventory";
-    var testimonialUrl = "http://mymatchbox.v1.idc.tarento.com/api/v2/testimonial";
-    var testimonialUrl = "http://mymatchbox.v1.idc.tarento.com//api/v2/getAvailableSpaces";
-
 
     var map;
 
@@ -15,11 +12,6 @@ $( document ).ready(function() {
 
     getRequest(featuredSpacesUrl, featuredSapces);
     getRequest(cityInventoryUrl, cityInventory);
-    getRequest(testimonialUrl, testimonial);
-
-
-
-
 
 
     function getRequest(url,functionName){
@@ -63,32 +55,7 @@ $( document ).ready(function() {
             $("#ev-featured-wrapper").append(temp_html);
         }
 
-
     }
-
-
-    function testimonial(response){
-        testimonialData= response;
-        for (var i = response.data.length - 1; i >= 0; i--) {
-            var temp_html =  
-            
-            '<div class="carousel-item active">'+
-                '<div class="row justify-content-center">'+
-                    '<div class="col-sm-8 text-center">'+
-                        '<p class="ev-testimonial">My matchbox is the best place to book meeting rooms and short term spaces online. The platform is very easy and can be used book spaces on a daily basis.</p>'+
-                        '<img class="ev-img" src="assets/img/tes-dummy-img.png"  width="86" height="86" alt="Image | User Name"/>'+
-                        '<p class="ev-name">ELON MUSK</p>'+
-                        '<p class="ev-company">Founder, The Boring Company</p>'+
-                    '</div>'+
-                '</div>'+
-            '</div>';
-
-            $("#testimonials").append(temp_html);
-        }
-
-
-    }
-
 
     function cityInventory(response){
         cityInventoryData= response.data.cities;
@@ -116,64 +83,36 @@ $( document ).ready(function() {
             },
             type: "POST",
             dataType: "json",
+            crossDomain: true,
             data: {"lon": "77.63615519999996", "lat": "12.9265132"},
             success: function (result) {
                 console.log(result);
+                console.log("Inside")
                 localStorage.setItem('citiesData', JSON.stringify(result));
-                // window.location.assign("file:///C:/Users/Team%20Evoque/Desktop/my%20match%20box%20-%20Git/list.html")
-            },
-            error: function () {
-                console.log("error");
-            }
-        });
-    });
-
-    $("#ev-banner-find-btn").click(function() {
-        var tempSelectbox = $("#cities").find('option:selected'); 
-        var tempSelectboxAttrLat = tempSelectbox.attr("lat");
-        var tempSelectboxAttrLng = tempSelectbox.attr("lng");
-
-        $.ajax({
-            url: "http://mymatchbox.v1.idc.tarento.com/api/v2/getAvailableSpaces",
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            type: "POST",
-            dataType: "json",
-            data: {"lon": "77.63615519999996", "lat": "12.9265132"},
-            success: function (result) {
-                console.log(result);
-                localStorage.setItem('citiesData', JSON.stringify(result));
-                // window.location.assign("file:///C:/Users/Team%20Evoque/Desktop/my%20match%20box%20-%20Git/list.html")
                 window.location.assign("file:///E:/matchbox-master/matchbox/list.html")
-
             },
             error: function () {
-                console.log("error");
+                alert("error");
             }
         });
     });
 
-
-    // =============================list page search api call==========================
-
-
-    // $("#cities").change(function() {
+    // $("#ev-banner-find-btn").click(function() {
     //     var tempSelectbox = $("#cities").find('option:selected'); 
     //     var tempSelectboxAttrLat = tempSelectbox.attr("lat");
     //     var tempSelectboxAttrLng = tempSelectbox.attr("lng");
 
     //     $.ajax({
-    //         url: "http://mymatchbox.v1.idc.tarento.com//api/v2/getAvailableSpaces",
+    //         url: "http://mymatchbox.v1.idc.tarento.com/api/v2/getAvailableSpaces",
     //         headers: {
     //             'Content-Type': 'application/x-www-form-urlencoded'
     //         },
     //         type: "POST",
     //         dataType: "json",
-    //         data: {"capacity":{"min":"1","max":"1"},"lon":"77.63615519999996","lat":"12.9265132","etime":"05:00 PM","stime":"09:00 AM","roomType":"Hot Desk","timeType":"undefined","city":"Bangalore","date":"undefined","timeZoneOffset":-330,"fromDate":"08/10/2018","endDate":"08/11/2018","excludeHoliday":"true","excludeSunday":"true"} Meeting Room {"capacity":{"min":"03","max":"8"},"lon":"77.63615519999996","lat":"12.9265132","etime":"Thu, 10 Aug 2018 06:30:00 GMT","stime":"Thu, 10 Aug 2018 03:30:00 GMT","roomType":"Meeting Room","timeType":"undefined","city":"Bangalore","date":"08/09/2018","timeZoneOffset":null,"fromDate":"undefined","endDate":"undefined"} Board Room {"capacity":{"min":"03","max":"8"},"lon":"77.63615519999996","lat":"12.9265132","etime":"Thu, 10 Aug 2018 06:30:00 GMT","stime":"Thu, 10 Aug 2018 03:30:00 GMT","roomType":"Board Room","timeType":"undefined","city":"Bangalore","date":"08/09/2018","timeZoneOffset":null,"fromDate":"undefined","endDate":"undefined"} Training Room {"capacity":{"min":"11","max":"20"},"lon":"77.63615519999996","lat":"12.9265132","etime":"06:00 PM","stime":"09:00 AM","roomType":"Training Room","timeType":"undefined","place":"1st Block (Koramangala)","date":"undefined","timeZoneOffset":-330,"fromDate":"08/09/2018","endDate":"08/10/2018","excludeHoliday":"true","excludeSunday":"true"},
+    //         data: {"lon": "77.63615519999996", "lat": "12.9265132"},
     //         success: function (result) {
     //             console.log(result);
-    //             // localStorage.setItem('citiesData', JSON.stringify(result));
+    //             localStorage.setItem('citiesData', JSON.stringify(result));
     //             // window.location.assign("file:///C:/Users/Team%20Evoque/Desktop/my%20match%20box%20-%20Git/list.html")
     //         },
     //         error: function () {
@@ -196,7 +135,7 @@ $( document ).ready(function() {
 
     if((localStorage.getItem('citiesData'))){
         var cityCentersData = JSON.parse((localStorage.getItem('citiesData')));
-        console.log(cityCentersData);
+         console.log("Inside cities data");
         for (var i = cityCentersData.spaces.length - 1; i >= 0; i--) {
             var temp_html =  
             '<div class="col-md-6 col-sm-6 col-12 ev-margin-top">'+
