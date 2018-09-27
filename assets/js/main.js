@@ -31,31 +31,48 @@ $( document ).ready(function() {
         });
     };
 
+
+
     function featuredSapces(response){
         featuredSpacesData= response;
+        console.log('featured list',response.data);
         for (var i = response.data.length - 1; i >= 0; i--) {
             var temp_html =  
             
             '<div class="col-md-4 col-sm-6 col-12 ev-margin-top">'+
                 '<div class="ev-fea-item">'+
-                    '<a href="#">'+
+                    '<a href="./space-detail.html">'+
                        ' <div class="ev-fea-image-overlay-wrapper">'+
                             '<img src="'+response.data[i].images[0].url+'"  width="100%" height="216" class="img-fluid" alt="Image | Featured Space 1"/>'+
                             '<div class="ev-fea-image-overlay">'+
                             '</div>'+
                         '</div>'+
-                        '<div class="carousel-caption text-left">'+
-                            '<p>'+response.data[i].name+'</p>'+
-                            '<span>Learn More</span>'+
+                        '<div class="carousel-caption text-left" >'+
+                            '<p class=" listName">'+response.data[i].name+'</p>'+
+                            '<span >Learn More</span>'+
                         '</div>'+
                     '</a>'+
                 '</div>'+
             '</div>';
 
             $("#ev-featured-wrapper").append(temp_html);
+            // var detailPage = [ response.data[i].name, response[i].Latitude, response[i].Longitude, response[i].VenueID ,response[i].Description, response[i].Images[0], response[i].Images[1], response[i].Street ];
+            // detailPage.push(detailPage);
+            // localStorage.setItem('detailPage', JSON.stringify(detailPage));
+             
         }
 
     }
+    // $("#ev-featured-wrapper").click(function(index){
+    //     console.log('haiiiiiiiii');
+    //     var id = $(".listName").text();
+    //     console.log('name was',id)
+    //     $( ".listName" ).text(function( index ) {
+    //       // return "item number " + ( index + 1 );
+    //     console.log('name was',index)
+
+    //     });
+    // })
 
     function cityInventory(response){
         cityInventoryData= response.data.cities;
@@ -90,13 +107,14 @@ $( document ).ready(function() {
                 console.log(result);
                 console.log("Inside")
                 localStorage.setItem('citiesData', JSON.stringify(result));
-                window.location.assign("https://mymatchbox.netlify.com/list.html")
+                window.location.assign("file:///E:/matchbox-master/matchbox/list.html")
             },
             error: function (error) {
                 console.log("error",error);
             }
         });
     });
+
 
     // $("#ev-banner-find-btn").click(function() {
     //     var tempSelectbox = $("#cities").find('option:selected'); 
@@ -147,7 +165,7 @@ $( document ).ready(function() {
                             '<h3>'+cityCentersData.spaces[i].name+', '+cityCentersData.spaces[i].locality+'</h3>'+
                             '<p>'+cityCentersData.spaces[i].address1 +', '+cityCentersData.spaces[i].address2 +'</p>'+
                             '<div>'+
-                                '<a href="#" class="ev-primary-btn ev-list-item-cta-btn"> View More</a>'+
+                                '<a href="./space-detail.html" class="ev-primary-btn ev-list-item-cta-btn"> View More</a>'+
                             '</div>'+
                         '</div>'+
                     '</a>'+

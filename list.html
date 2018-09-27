@@ -63,7 +63,7 @@
                             <div class="col-md-6">
                                     <div class="ev-cus-dd ev-loc ev-list-select-box">
                                         <div class="select">
-                                           <select id="cities">
+                                           <select id="cities" onchange="changeSpaceList()">
                                                 <option value="" disabled selected>Select City</option>
                                                 
                                             </select>
@@ -73,7 +73,7 @@
                                 <div class="col-md-6">
                                     <div class="ev-cus-dd ev-office-type ev-list-select-box">
                                         <div class="select">
-                                           <select id="space-type">
+                                           <select id="space-type" onchange="changeSpaceList()">
                                                 <option value="" disabled selected>Type of Space</option>
                                                 
                                             </select>
@@ -381,7 +381,37 @@
     }
   }
 </script> -->
+<script type="text/javascript">
+     function changeSpaceList() {
+      console.log('something')
+       event.preventDefault();
+
+        var tempSelectbox = $("#cities").find('option:selected'); 
+        var tempSelectboxAttrLat = tempSelectbox.attr("lat");
+        var tempSelectboxAttrLng = tempSelectbox.attr("lng");
+
+        $.ajax({
+            url: "http://mymatchbox.v1.idc.tarento.com/api/v2/getNearBySpace",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "POST",
+            dataType: "json",
+            data: {"lon": tempSelectboxAttrLng, "lat": tempSelectboxAttrLat},
+            success: function (result) {
+                console.log(result);
+                console.log("Inside")
+                localStorage.setItem('citiesData', JSON.stringify(result));
+                window.location.assign("file:///E:/matchbox-master/matchbox/list.html")
+            },
+            error: function (error) {
+                console.log("error",error);
+            }
+        });
+    }
+</script>
     <script src="assets/js/mapscript.js"></script>
+
 
     <script type="text/javascript" src="assets/js/jquery-2.1.3-min.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
