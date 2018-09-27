@@ -90,7 +90,7 @@ $( document ).ready(function() {
                 console.log(result);
                 console.log("Inside")
                 localStorage.setItem('citiesData', JSON.stringify(result));
-                window.location.assign("file:///E:/matchbox-master/matchbox/list.html")
+                window.location.assign("https://mymatchbox.netlify.com/list.html")
             },
             error: function (error) {
                 console.log("error",error);
