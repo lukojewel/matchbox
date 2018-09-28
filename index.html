@@ -619,6 +619,16 @@
         }
     }
     </script>
+    <script type="text/javascript">
+        
+        function reply_click(obj)
+            {
+            var tempId = $(obj ).attr("Space-item");
+            console.log('idForSapce=',tempId);
+            localStorage.setItem('SpaceDetailId',tempId) ;
+            window.location.assign("file:///E:/matchbox-master/matchbox/space-detail.html")
+            }
+    </script>
   
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

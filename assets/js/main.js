@@ -36,12 +36,13 @@ $( document ).ready(function() {
     function featuredSapces(response){
         featuredSpacesData= response;
         console.log('featured list',response.data);
+        // console.log('featured list id of space',response.data[0].spaceId);
         for (var i = response.data.length - 1; i >= 0; i--) {
             var temp_html =  
             
-            '<div class="col-md-4 col-sm-6 col-12 ev-margin-top">'+
+            '<div class="col-md-4 col-sm-6 col-12 ev-margin-top spaceitem-wrap" id="'+i+'" Space-item="'+response.data[i].spaceId+'" onClick="reply_click(this)">'+
                 '<div class="ev-fea-item">'+
-                    '<a href="./space-detail.html">'+
+                    '<a  /*href="./space-detail.html"*/>'+
                        ' <div class="ev-fea-image-overlay-wrapper">'+
                             '<img src="'+response.data[i].images[0].url+'"  width="100%" height="216" class="img-fluid" alt="Image | Featured Space 1"/>'+
                             '<div class="ev-fea-image-overlay">'+
@@ -63,16 +64,8 @@ $( document ).ready(function() {
         }
 
     }
-    // $("#ev-featured-wrapper").click(function(index){
-    //     console.log('haiiiiiiiii');
-    //     var id = $(".listName").text();
-    //     console.log('name was',id)
-    //     $( ".listName" ).text(function( index ) {
-    //       // return "item number " + ( index + 1 );
-    //     console.log('name was',index)
-
-    //     });
-    // })
+// ===================================================not yet working code start=============================   
+        
 
     function cityInventory(response){
         cityInventoryData= response.data.cities;
@@ -231,9 +224,72 @@ $( document ).ready(function() {
     //         ]}
     //     ]
     // });
+  
 
-    
+// =======================================workin on it=================================================
 
 
+/*
+  $( document ).ready(function() {
+        console.log( "ready!" );
+        if((localStorage.getItem('SpaceDetailId'))){
+            var detailpageId = JSON.parse((localStorage.getItem('SpaceDetailId')));
+
+            $.ajax({
+            url: "http://mymatchbox.v1.idc.tarento.com/api/roomdetails/5b517c6c1d7e69255c20f8f0",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "GET",
+            dataType: "json",
+            success: function (result) {
+                var spaceDetailInfo=result;
+                console.log('got data as',result);
+            },
+            error: function () {
+                console.log("error");
+            }
+        });
+        });
+
+        
+        console.log("Inside detailpage console");
+        var temp_html =  
+          '<div class="">'+
+            '<div id="MMBOffices" class="carousel slide" data-ride="carousel">'+
+                '<ol class="carousel-indicators">'+
+                    '<li data-target="#MMBOffices" data-slide-to="0" class="active"></li>'+
+                    '<li data-target="#MMBOffices" data-slide-to="1"></li>'+
+                    '<li data-target="#MMBOffices" data-slide-to="2"></li>'+
+                '</ol>'+
+
+                '<div class="carousel-inner">'+
+                    '<div class="carousel-item active"> <img class="d-block w-100" src="assets/img/space-detail-banner.jpg"> </div>'+
+                    '<!-- <div class="carousel-item"> <img class="d-block w-100" src="assets/img/banner-bg-2.png"> </div>'+
+                    '<div class="carousel-item"> <img class="d-block w-100" src="assets/img/banner-bg-3.png"> </div> -->'+
+                '</div>'+
+            '</div>'+
+        '</div>'+
+        '<div class="container">'+
+            '<div class="carousel-caption ev-caption-container">'+
+                '<div class="row justify-content-center">'+
+                    '<div class="col-12">'+
+                        '<h1>WEWORK EGL, BENGALURU</h1>'+
+                        '<p class="ev-sec-txt">Premium Coworking Space In EGL, Inner Ring Road, Bengaluru</p>'+
+                    '</div>'+
+                '</div>'+
+                
+            '</div>'+
+        '</div> ';
+
+        $("#ev-spaceDetailpage").append(temp_html);
+
+    });*/
+
+
+
+
+
+// =======================================workin on it=================================================
 
 });
