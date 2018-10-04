@@ -161,9 +161,8 @@ $( document ).ready(function() {
             '</div>';
 
             $("#ev-center-list").append(temp_html);
-            // var location = [ cityCentersData.spaces[i].name, response[i].Latitude, response[i].Longitude, response[i].VenueID ,response[i].Description, response[i].Images[0], response[i].Images[1], response[i].Street ];
-            // locations.push(location);
         }
+        // localStorage.removeItem("filterData");
         // localStorage.clear();
     }
 
