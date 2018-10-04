@@ -103,14 +103,6 @@ $( document ).ready(function() {
         });
     });
 
-    var locations= [];
-
-    function initMap() {
-      var uluru = {lat: 12.8873182, lng: 77.6396559};
-      var map = new google.maps.Map(
-          document.getElementById('googleMap'), {zoom: 14, center: uluru});
-     var marker = new google.maps.Marker({position: uluru, map: map});
-    }
  
     if((localStorage.getItem('citiesData'))){
         var cityCentersData = JSON.parse((localStorage.getItem('citiesData')));
@@ -140,20 +132,23 @@ $( document ).ready(function() {
     }
 
     if((localStorage.getItem('filterData'))){
+        
         var filterData = JSON.parse((localStorage.getItem('filterData')));
         for (var i = filterData.length - 1; i >= 0; i--) {
-            console.log("Inside cityCentersData",filterData[i]._id);
+            // Room Id 
+            console.log("Room Id",filterData[i]._id);
             localStorage.setItem('centerId', JSON.stringify(filterData[i]._id));
+            
             var temp_html =  
             '<div class="col-md-6 col-sm-6 col-12 ev-margin-top">'+
                 '<div class="ev-fea-item ev-list-item-wrapper">'+
-                    '<a href="#">'+
+                    '<a href="javascript:void(0);" onclick="showDetails();">'+
                         '<img src="'+filterData[i].images[0].url+'"  width="100%" height="216" class="img-fluid" alt="Image | Featured Space 1"/>'+
                         '<div class="ev-listing-item-caption text-left">'+
                             '<h3>'+filterData[i].spaceId.name+', '+filterData[i].spaceId.locality+'</h3>'+
                             '<p>'+filterData[i].spaceId.address1 +', '+filterData[i].spaceId.address2 +'</p>'+
                             '<div>'+
-                                '<a href="javascript:void(0);" onclick="ShowOld();" class="ev-primary-btn ev-list-item-cta-btn"> View More</a>'+
+                                '<a href="javascript:void(0);" onclick="showDetails();" class="ev-primary-btn ev-list-item-cta-btn"> View More</a>'+
                             '</div>'+
                         '</div>'+
                     '</a>'+
@@ -162,12 +157,8 @@ $( document ).ready(function() {
 
             $("#ev-center-list").append(temp_html);
         }
-        // localStorage.removeItem("filterData");
-        // localStorage.clear();
     }
 
-
-    // console.log('From main.js', localStorage.getItem('roomDetails') )
   
     if (localStorage.getItem('roomDetails')){
         var roomDetailsData = JSON.parse((localStorage.getItem('roomDetails')));
@@ -202,116 +193,4 @@ $( document ).ready(function() {
         }
     }    
     
-    var uluru = {lat: 12.8873182, lng: 77.6396559};
-    
-    // Initialize and add the map
-    function initMap() {
-      // The location of Uluru
-      var uluru = {lat: 12.8873182, lng: 77.6396559};
-      // The map, centered at Uluru
-      var map = new google.maps.Map(
-          document.getElementById('map'), {zoom: 4, center: uluru});
-      // The marker, positioned at Uluru
-
-      var marker = new google.maps.Marker({position: uluru, map: map});
-    }
-
-    // map=new google.maps.Map(document.getElementById("googleMap"), {
-    //     zoom: 12,
-    //     center: new google.maps.LatLng( 12.8873182, 77.6396559),
-    //     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    //     styles: [ {
-    //             "elementType": "labels",
-    //             "stylers": [ {
-    //                 "visibility": "off"
-    //             }]
-    //         }, {
-    //             "featureType": "administrative.land_parcel",
-    //             "stylers": [ {
-    //                 "visibility": "off"
-    //         }]
-    //         }, {
-    //             "featureType": "administrative.neighborhood",
-    //             "stylers": [ {
-    //                 "visibility": "off"
-    //         }]
-    //         }, {
-    //             "featureType": "poi.business",
-    //             "stylers": [ {
-    //                 "visibility": "off"
-    //             }]
-    //         }, {
-    //             "featureType": "poi.park",
-    //             "elementType": "labels.text",
-    //             "stylers": [
-    //             {
-    //             "visibility": "off"
-    //             }
-    //         ]}
-    //     ]
-    // });
-  
-
-// =======================================workin on it=================================================
-
-
-/*
-  $( document ).ready(function() {
-        console.log( "ready!" );
-        if((localStorage.getItem('SpaceDetailId'))){
-            var detailpageId = JSON.parse((localStorage.getItem('SpaceDetailId')));
-
-            $.ajax({
-            url: "http://mymatchbox.v1.idc.tarento.com/api/roomdetails/5b517c6c1d7e69255c20f8f0",
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            type: "GET",
-            dataType: "json",
-            success: function (result) {
-                var spaceDetailInfo=result;
-                console.log('got data as',result);
-            },
-            error: function () {
-                console.log("error");
-            }
-        });
-        });
-
-        
-        console.log("Inside detailpage console");
-        var temp_html =  
-          '<div class="">'+
-            '<div id="MMBOffices" class="carousel slide" data-ride="carousel">'+
-                '<ol class="carousel-indicators">'+
-                    '<li data-target="#MMBOffices" data-slide-to="0" class="active"></li>'+
-                    '<li data-target="#MMBOffices" data-slide-to="1"></li>'+
-                    '<li data-target="#MMBOffices" data-slide-to="2"></li>'+
-                '</ol>'+
-
-                '<div class="carousel-inner">'+
-                    '<div class="carousel-item active"> <img class="d-block w-100" src="assets/img/space-detail-banner.jpg"> </div>'+
-                    '<!-- <div class="carousel-item"> <img class="d-block w-100" src="assets/img/banner-bg-2.png"> </div>'+
-                    '<div class="carousel-item"> <img class="d-block w-100" src="assets/img/banner-bg-3.png"> </div> -->'+
-                '</div>'+
-            '</div>'+
-        '</div>'+
-        '<div class="container">'+
-            '<div class="carousel-caption ev-caption-container">'+
-                '<div class="row justify-content-center">'+
-                    '<div class="col-12">'+
-                        '<h1>WEWORK EGL, BENGALURU</h1>'+
-                        '<p class="ev-sec-txt">Premium Coworking Space In EGL, Inner Ring Road, Bengaluru</p>'+
-                    '</div>'+
-                '</div>'+
-                
-            '</div>'+
-        '</div> ';
-
-        $("#ev-spaceDetailpage").append(temp_html);
-
-    });*/
-
-// =======================================workin on it=================================================
-
 });

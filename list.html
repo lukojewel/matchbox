@@ -374,13 +374,15 @@
 </script> -->
 <script type="text/javascript">
     function changeSpaceList() {
-        // event.preventDefault();
+        
+        localStorage.removeItem('citiesData');
+
         var tempSelectbox = $("#cities").find('option:selected'); 
-        var spaceTypeSelectbox = $("#space-type").find('option:selected'); 
-        var tempSelectboxAttrLat = tempSelectbox.attr("lat");
-        var tempSelectboxAttrLng = tempSelectbox.attr("lng");
+        var spaceTypeSelectbox = $("#space-type").find('option:selected');
+        
         // Selected City
         var tempSectetboxRoomCity= tempSelectbox.attr("value");
+        
         // Selected Office Type
         var tempSectetboxRoomType= spaceTypeSelectbox.attr("value");
 
@@ -416,7 +418,6 @@
 
                 success: function (result) {
                     // Need ti implement Server Error
-                    console.log('-------------Result---------',result['rooms']);
                     localStorage.setItem('filterData', JSON.stringify(result['rooms']));
                     window.location.assign("./list.html")
                 },
@@ -427,8 +428,8 @@
         }
     }
 
-    function ShowOld(){
-        
+    // Function handles Detail page actions
+    function showDetails(){
         var centerId= localStorage.getItem('centerId')
         console.log(centerId)
         console.log('http://mymatchbox.v1.idc.tarento.com/api/roomdetails/'+centerId.substr(1).slice(0, -1))
@@ -441,6 +442,7 @@
             dataType: "json",
             success: function (result) {
                 localStorage.setItem('roomDetails', JSON.stringify(result));
+                // Redirect to detail page 
                 window.location.assign("./space-detail.html")
             },
             error: function () {
