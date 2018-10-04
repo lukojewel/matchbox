@@ -1,31 +1,4 @@
 function initMap() {
-     
-
-
-	// var broadway = {
-	// 	info: '<strong>Chipotle on Broadway</strong><br>\
-	// 				5224 N Broadway St<br> Chicago, IL 60640<br>\
-	// 				<a href="https://goo.gl/maps/jKNEDz4SyyH2">Get Directions</a>',
-	// 	lat: 12.97166580919054,
-	// 	long: 77.59622508465577
-	// };
-
-	// var belmont = {
-	// 	info: '<strong>Chipotle on Belmont</strong><br>\
-	// 				1025 W Belmont Ave<br> Chicago, IL 60657<br>\
-	// 				<a href="https://goo.gl/maps/PHfsWTvgKa92">Get Directions</a>',
-	// 	lat: 12.93166580919054,
-	// 	long: 77.59622502465577
-	// };
-
-	// var sheridan = {
-	// 	info: '<strong>Chipotle on Sheridan</strong><br>\r\
-	// 				6600 N Sheridan Rd<br> Karnataka 562125<br>\
-	// 				<a href="https://goo.gl/maps/QGUrqZPsYp92">Get Directions</a>', 
-	// 	lat: 12.898705,
-	// 	long: 77.794365
-	// };
-
 	
     if((localStorage.getItem('citiesData'))){
         var cityCentersmapData = JSON.parse((localStorage.getItem('citiesData')));
@@ -41,17 +14,20 @@ function initMap() {
                 lat: [cityCentersmapData.spaces[i].loc[1] ],
                 long: [cityCentersmapData.spaces[i].loc[0] ]
             };
+            // locations.push(mapDetails);
         }
 
         console.log('location data are::::',mapdata,mapdata2);
-        console.log('location mapInfo::::',mapInfostore);
+        // console.log('location mapInfo::::',mapInfostore);
 
 	   	var locations = [
 	    	[ mapDetails.info, mapDetails.lat, mapDetails.long ]
 	    ];
 
-	    var latmap=[cityCentersmapData.spaces[0].loc[1]];
-	    var lonmap=[cityCentersmapData.spaces[0].loc[0]];
+	    var latmap= cityCentersmapData.spaces[0].loc[1];
+	    var lonmap= cityCentersmapData.spaces[0].loc[0];
+
+	    console.log('cityCentersmapData-Longitude ::',lonmap)
 
 		var map = new google.maps.Map(document.getElementById('map'), {
 			zoom: 12,
