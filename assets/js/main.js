@@ -64,9 +64,9 @@ $( document ).ready(function() {
     function cityInventory(response){
         cityInventoryData= response.data.cities;
         spaceTypeData = response.data.inventories;
-
+        console.log('cities data in city inventry::',response.data)
         for (var i = response.data.cities.length - 1; i >= 0; i--) {
-            $('#cities').append('<option lat="'+response.data.cities[i].lat+'" lng="'+response.data.cities[i].lng+'" value="'+response.data.cities[i].cityValue+'">'+response.data.cities[i].city+'</option>');
+            $('#cities').append('<option lat="'+response.data.cities[i].lat+'" city="'+response.data.cities[i].city+'" lng="'+response.data.cities[i].lng+'" value="'+response.data.cities[i].cityValue+'">'+response.data.cities[i].city+'</option>');
         }
 
         for (var i = response.data.inventories.length - 1; i >= 0; i--) {
@@ -81,19 +81,60 @@ $( document ).ready(function() {
         var tempSelectbox = $("#cities").find('option:selected'); 
         var tempSelectboxAttrLat = tempSelectbox.attr("lat");
         var tempSelectboxAttrLng = tempSelectbox.attr("lng");
+        var tempSelectboxAttrcity = tempSelectbox.attr("city");
+        var tempSelectboxAttrroomType = $( "#space-type option:selected" ).text();
 
-        $.ajax({
-            url: "http://mymatchbox.v1.idc.tarento.com/api/v2/getNearBySpace",
+        // $.ajax({
+        //     url: "http://mymatchbox.v1.idc.tarento.com/api/v2/getNearBySpace",
+        //     headers: {
+        //         'Content-Type': 'application/x-www-form-urlencoded'
+        //     },
+        //     type: "POST",
+        //     dataType: "json",
+        //     data: {"lon": tempSelectboxAttrLng, "lat": tempSelectboxAttrLat},
+        //     success: function (result) {
+        //         console.log('getneraby space result::',result);
+        //         console.log("result")
+        //         localStorage.setItem('citiesData', JSON.stringify(result));
+        //         //console.log('City Data ::',JSON.stringify(result))
+        //         // window.location.assign("./list.html")
+        //     },
+        //     error: function (error) {
+        //         console.log("error",error);
+        //     }
+        // });
+
+         $.ajax({
+            url: "http://mymatchbox.v1.idc.tarento.com/api/v2/getAvailableSpaces",
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             type: "POST",
             dataType: "json",
-            data: {"lon": tempSelectboxAttrLng, "lat": tempSelectboxAttrLat},
+            data:
+
+                {
+                    "capacity":{
+                        "min": "03",
+                        "max": "8"
+                    },
+                    "lon": "77.63615519999996",
+                    "lat": "12.9265132",
+                    "etime": new Date(),
+                    "stime": new Date(),
+                    "roomType": tempSelectboxAttrroomType,
+                    "timeType":"undefined",
+                    "city": tempSelectboxAttrcity, 
+                    "date": "09/30/2018", 
+                    "timeZoneOffset": null,
+                    "fromDate": "undefined",
+                    "endDate": "undefined"
+                },
             success: function (result) {
-                console.log(result);
-                console.log("Inside")
-                localStorage.setItem('citiesData', JSON.stringify(result));
+                console.log('getAvailableSpaces space result::');
+                console.log(result)
+                // localStorage.setItem('citiesData', JSON.stringify(result));
+                localStorage.setItem('filterData', JSON.stringify(result['rooms']));
                 console.log('City Data ::',JSON.stringify(result))
                 window.location.assign("./list.html")
             },
@@ -108,8 +149,9 @@ $( document ).ready(function() {
         var cityCentersData = JSON.parse((localStorage.getItem('citiesData')));
         console.log("Inside cityCentersData",cityCentersData);
         for (var i = cityCentersData.spaces.length - 1; i >= 0; i--) {
+            localStorage.setItem('centerId', JSON.stringify(cityCentersData.spaces[i]._id));
             var temp_html =  
-            '<div class="col-md-6 col-sm-6 col-12 ev-margin-top">'+
+            '<div class="col-md-6 col-sm-6 col-12 ev-margin-top" Space-item="'+cityCentersData.spaces[i]._id+'" onClick="reply_click(this)">'+
                 '<div class="ev-fea-item ev-list-item-wrapper">'+
                     '<a href="#">'+
                         '<img src="'+cityCentersData.spaces[i].images[0].url+'"  width="100%" height="216" class="img-fluid" alt="Image | Featured Space 1"/>'+
@@ -117,7 +159,7 @@ $( document ).ready(function() {
                             '<h3>'+cityCentersData.spaces[i].name+', '+cityCentersData.spaces[i].locality+'</h3>'+
                             '<p>'+cityCentersData.spaces[i].address1 +', '+cityCentersData.spaces[i].address2 +'</p>'+
                             '<div>'+
-                                '<a href="javascript:void(0);"  class="ev-primary-btn ev-list-item-cta-btn"> View More</a>'+
+                                '<a href="./space-detail.html"  class="ev-primary-btn ev-list-item-cta-btn"> View More</a>'+
                             '</div>'+
                         '</div>'+
                     '</a>'+
@@ -136,11 +178,12 @@ $( document ).ready(function() {
         var filterData = JSON.parse((localStorage.getItem('filterData')));
         for (var i = filterData.length - 1; i >= 0; i--) {
             // Room Id 
+            console.log("filterData",filterData);
             console.log("Room Id",filterData[i]._id);
             localStorage.setItem('centerId', JSON.stringify(filterData[i]._id));
             
             var temp_html =  
-            '<div class="col-md-6 col-sm-6 col-12 ev-margin-top">'+
+            '<div class="col-md-6 col-sm-6 col-12 ev-margin-top" Space-item="'+filterData[i]._id+'" onClick="reply_click(this)">'+
                 '<div class="ev-fea-item ev-list-item-wrapper">'+
                     '<a href="javascript:void(0);" onclick="showDetails();">'+
                         '<img src="'+filterData[i].images[0].url+'"  width="100%" height="216" class="img-fluid" alt="Image | Featured Space 1"/>'+
@@ -163,9 +206,22 @@ $( document ).ready(function() {
     if (localStorage.getItem('roomDetails')){
         var roomDetailsData = JSON.parse((localStorage.getItem('roomDetails')));
         var description= roomDetailsData['description'];
+        var description= roomDetailsData['description'];
+        var spaceName=roomDetailsData.spaceId.name;
+        var address1=roomDetailsData.spaceId.address1;
+        var address2=roomDetailsData.spaceId.address2;
         var amenities= roomDetailsData['amenities'];
         
+        console.log('roomDetails name ::',roomDetailsData)
         console.log('Amenities ::',amenities)
+        // Title
+
+        var temp_html =  
+        '<h1 >'+
+            spaceName+
+        '</h1>'+
+        '<p class="ev-sec-txt">'+address1+' , '+address2+'</p>';
+        $("#space_detail_banner_head").append(temp_html); 
 
         // Description 
         var temp_html =  

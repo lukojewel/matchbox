@@ -418,6 +418,8 @@
 
                 success: function (result) {
                     // Need ti implement Server Error
+                    console.log('get avilable space result anson')
+                    console.log(result)
                     localStorage.setItem('filterData', JSON.stringify(result['rooms']));
                     window.location.assign("./list.html")
                 },
