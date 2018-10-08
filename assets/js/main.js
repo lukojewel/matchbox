@@ -48,8 +48,7 @@ $( document ).ready(function() {
 
             $("#ev-featured-wrapper").append(temp_html);     
         }
-
-    }
+    };
  
     function cityInventory(response){
         cityInventoryData= response.data.cities;
@@ -104,7 +103,7 @@ $( document ).ready(function() {
                 console.log("error",error);
             }
         });
-    }
+    };
 
     if(localStorage.getItem('citiesData')){
         var cityCentersData = JSON.parse((localStorage.getItem('citiesData')));
@@ -127,7 +126,7 @@ $( document ).ready(function() {
 
             $("#ev-center-list").append(temp_html);
         }
-    }
+    };
 
     $(".ev-list-item-cta-btn").click(function(event) {
         event.preventDefault();
