@@ -63,7 +63,7 @@
                             <div class="col-md-6">
                                     <div class="ev-cus-dd ev-loc ev-list-select-box">
                                         <div class="select">
-                                           <select id="cities" onchange="changeSpaceList()">
+                                           <select id="cities">
                                                 <option value="" disabled selected>Select City</option>
                                                 
                                             </select>
@@ -73,7 +73,7 @@
                                 <div class="col-md-6">
                                     <div class="ev-cus-dd ev-office-type ev-list-select-box">
                                         <div class="select">
-                                           <select id="space-type" onchange="changeSpaceList()">
+                                           <select id="space-type" class="ev-list-type-select-box">
                                                 <option value="" disabled selected>Type of Space</option>
                                                 
                                             </select>
@@ -255,207 +255,7 @@
         </section>
     </footer>
 
-    <!--  <script>
-        var locations= [];
-        $("#ev-banner-find-btn").click(function() {
-            var tempSelectbox = $("#cities").find('option:selected'); 
-            var tempSelectboxAttrLat = tempSelectbox.attr("lat");
-            var tempSelectboxAttrLng = tempSelectbox.attr("lng");
-
-            $.ajax({
-                url: "http://mymatchbox.v1.idc.tarento.com/api/v2/getNearBySpace",
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                type: "POST",
-                dataType: "json",
-                data: {"lon": "77.63615519999996", "lat": "12.9265132"},
-                success: function (result) {
-                    console.log(result);
-                    localStorage.setItem('citiesData', JSON.stringify(result));
-                    window.location.assign("https://mymatchbox.netlify.com/list.html")
-                },
-                error: function () {
-                    console.log("error");
-                }
-            });
-        });
-
-
-        if((localStorage.getItem('citiesData'))){
-        var cityCentersData = JSON.parse((localStorage.getItem('citiesData')));
-        console.log(cityCentersData);
-        for (var i = cityCentersData.spaces.length - 1; i >= 0; i--) {
-            var temp_html =  
-            '<div class="col-md-6 col-sm-6 col-12 ev-margin-top">'+
-                '<div class="ev-fea-item ev-list-item-wrapper">'+
-                    '<a href="#">'+
-                        '<img src="'+cityCentersData.spaces[i].images[0].url+'"  width="100%" height="216" class="img-fluid" alt="Image | Featured Space 1"/>'+
-                        '<div class="ev-listing-item-caption text-left">'+
-                            '<h3>'+cityCentersData.spaces[i].name+', '+cityCentersData.spaces[i].locality+'</h3>'+
-                            '<p>'+cityCentersData.spaces[i].address1 +', '+cityCentersData.spaces[i].address2 +'</p>'+
-                            '<div>'+
-                                '<a href="#" class="ev-primary-btn ev-list-item-cta-btn"> View More</a>'+
-                            '</div>'+
-                        '</div>'+
-                    '</a>'+
-                '</div>'+
-            '</div>';
-
-            $("#ev-center-list").append(temp_html);
-
-
-            var location = [ cityCentersData.spaces[i].name, response[i].Latitude, response[i].Longitude, response[i].VenueID ,response[i].Description, response[i].Images[0], response[i].Images[1], response[i].Street ];
-            locations.push(location);
-
-
-        }
-        // localStorage.clear();
-    }
-
-
-
-
-        function initMap() {
-          var uluru = {lat: 12.8873182, lng: 77.6396559};
-          var map = new google.maps.Map(
-              document.getElementById('googleMap'), {zoom: 14, center: uluru});
-         var marker = new google.maps.Marker({position: uluru, map: map});
-        }
-
-       
-</script> -->
-
-<!-- <script type="text/javascript">
-  var geocoder;
-  var map;
-  var address ="San Diego, CA";
-  function initialize() {
-    geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
-    var myOptions = {
-      zoom: 8,
-      center: latlng,
-    mapTypeControl: true,
-    mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
-    navigationControl: true,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
-    if (geocoder) {
-      geocoder.geocode( { 'address': address}, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
-          map.setCenter(results[0].geometry.location);
-
-            var infowindow = new google.maps.InfoWindow(
-                { content: '<b>'+address+'</b>',
-                  size: new google.maps.Size(150,50)
-                });
-
-            var marker = new google.maps.Marker({
-                position: results[0].geometry.location,
-                map: map, 
-                title:address
-            }); 
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open(map,marker);
-            });
-
-          } else {
-            alert("No results found");
-          }
-        } else {
-          alert("Geocode was not successful for the following reason: " + status);
-        }
-      });
-    }
-  }
-</script> -->
-<script type="text/javascript">
-    function changeSpaceList() {
-        
-        localStorage.removeItem('citiesData');
-
-        var tempSelectbox = $("#cities").find('option:selected'); 
-        var spaceTypeSelectbox = $("#space-type").find('option:selected');
-        
-        // Selected City
-        var tempSectetboxRoomCity= tempSelectbox.attr("value");
-        
-        // Selected Office Type
-        var tempSectetboxRoomType= spaceTypeSelectbox.attr("value");
-
-        console.log('spaceTypeSelectbox ==>>',tempSectetboxRoomCity)
-        console.log('spaceTypeSelectbox ==>>',tempSectetboxRoomType)
-        if( tempSectetboxRoomCity && tempSectetboxRoomType ){
-            $.ajax({
-                url: "http://mymatchbox.v1.idc.tarento.com/api/v2/getAvailableSpaces",
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                type: "POST",
-                dataType: "json",
-                data:
-
-                {
-                    "capacity":{
-                        "min": "03",
-                        "max": "8"
-                    },
-                    "lon": "77.63615519999996",
-                    "lat": "12.9265132",
-                    "etime": new Date(),
-                    "stime": new Date(),
-                    "roomType": tempSectetboxRoomType,
-                    "timeType":"undefined",
-                    "city": tempSectetboxRoomCity, 
-                    "date": "09/30/2018", 
-                    "timeZoneOffset": null,
-                    "fromDate": "undefined",
-                    "endDate": "undefined"
-                },
-
-                success: function (result) {
-                    // Need ti implement Server Error
-                    console.log('get avilable space result anson')
-                    console.log(result)
-                    localStorage.setItem('filterData', JSON.stringify(result['rooms']));
-                    window.location.assign("./list.html")
-                },
-                error: function (error) {
-                    console.log("error",error);
-                }
-            });  
-        }
-    }
-
-    // Function handles Detail page actions
-    function showDetails(){
-        var centerId= localStorage.getItem('centerId')
-        console.log(centerId)
-        console.log('http://mymatchbox.v1.idc.tarento.com/api/roomdetails/'+centerId.substr(1).slice(0, -1))
-        $.ajax({
-            url: 'http://mymatchbox.v1.idc.tarento.com/api/roomdetails/'+centerId.substr(1).slice(0, -1),
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            type: "GET",
-            dataType: "json",
-            success: function (result) {
-                localStorage.setItem('roomDetails', JSON.stringify(result));
-                // Redirect to detail page 
-                window.location.assign("./space-detail.html")
-            },
-            error: function () {
-                console.log("error");
-            }
-        });
-    }
-
-</script>
     <script src="assets/js/mapscript.js"></script>
-
     <script type="text/javascript" src="assets/js/jquery-2.1.3-min.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/helper.js"></script>
