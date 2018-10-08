@@ -88,10 +88,10 @@ $( document ).ready(function() {
                 console.log(result);
                 console.log("Inside")
                 localStorage.setItem('citiesData', JSON.stringify(result));
-                window.location.assign("file:///C:/Users/Team%20Evoque/Desktop/my%20match%20box%20-%20Git/list.html")
+                //window.location.assign("file:///C:/Users/Team%20Evoque/Desktop/my%20match%20box%20-%20Git/list.html")
             },
             error: function () {
-                console.log("error");
+                alert("error");
             }
         });
     });
