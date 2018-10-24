@@ -1,12 +1,14 @@
 $( document ).ready(function() {
 
-    var featuredSpacesData, cityInventoryData, spaceTypeData;
+    var featuredSpacesData, cityInventoryData, spaceTypeData, testimonialsData;
     var featuredSpacesUrl = "http://mymatchbox.v1.idc.tarento.com/api/v2/featuredSpaces";
     var cityInventoryUrl = "http://mymatchbox.v1.idc.tarento.com/api/v2/getCityInventory";
+    var testmonialsUrl = "http://mymatchbox.v1.idc.tarento.com/api/v2/testimonial";
     var map;
 
     getRequest(featuredSpacesUrl, featuredSapces);
     getRequest(cityInventoryUrl, cityInventory);
+    getRequest(testmonialsUrl, testimonials);
 
     function getRequest(url,functionName){
         $.ajax({
@@ -24,6 +26,25 @@ $( document ).ready(function() {
             }
         });
     };
+
+    function testimonials(response){
+        testimonialsData= response;
+        for (var i = response.data.length - 1; i >= 0; i--) {
+            var temp_html =  
+            '<div class="carousel-item active">'+
+                '<div class="row justify-content-center">'+
+                    '<div class="col-sm-8 text-center">'+
+                        '<p class="ev-testimonial">'+response.data[i].description+'</p>'+
+                        '<img class="ev-img" src="'+response.data[i].image+'"   width="86" height="86" alt="Image | User Name"/>'+
+                        '<p class="ev-name">'+response.data[i].name+'</p>'+
+                        '<p class="ev-company">'+response.data[i].organization+'</p>'+
+                    '</div>'+
+                '</div>'+
+            '</div>';
+
+            $("#testimonials").append(temp_html);     
+        }
+    }
 
     function featuredSapces(response){
         featuredSpacesData= response;
@@ -146,7 +167,6 @@ $( document ).ready(function() {
                 console.log("error");
             }
         });
-
     });
 
     if (localStorage.getItem('roomDetails')){
@@ -186,6 +206,6 @@ $( document ).ready(function() {
             '</div>';
             $("#ev-hotdsk-aminities-data").append(temp_html);    
         }
-    }    
+    }  
     
 });

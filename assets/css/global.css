@@ -346,6 +346,7 @@ a.ev-sec-btn:hover {
 .ev-testimonial-container .ev-img {
 	margin-top: 30px;
     margin-bottom: 15px;
+    border-radius: 50%;
 }
 .ev-testimonial-container .ev-name {
 	font-size: 13px;
