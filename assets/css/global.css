@@ -281,7 +281,7 @@ a.ev-sec-btn:hover {
 	overflow: hidden;
 }
 .ev-promo-container, .ev-partners-container {
-	padding: 60px 0px 65px;
+	padding: 80px 0px 85px;
 	background:url('../img/promo-bg.png') top left repeat;
 	position: relative;
     /*margin-top: 400px;*/
@@ -358,7 +358,7 @@ a.ev-sec-btn:hover {
     color: #777777;
 }
 .ev-testimonial-container .carousel-indicators, .ev-partners-container .carousel-indicators {
-	bottom: -50px;
+	bottom: -60px;
 }
 .ev-partners-container .align-middle {
 	margin: auto;
@@ -451,9 +451,11 @@ a.ev-sec-btn:hover {
 .ev-list-item-cta-btn{
     width: auto !important;
     padding: 8px 20px;
-    font-size: 13px;
+    font-size: 14px;
     margin-top: 10px;
     color: #292929 !important;
+    font-weight: 800;
+    text-transform: capitalize;
 }
 .ev-center-listing-section{
 	padding: 120px 0 0px;
@@ -988,4 +990,15 @@ a.ev-sec-btn:hover {
 }
 .ev-space-detail-amenities-section .ev-adv-sec-row{
 	padding: 25px 0;
+}
+.ev-space-detail-descp-head, #space_detail_banner_head h1{
+	text-transform: uppercase;
+}
+.ev-detail-time{
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    font-weight: 700;
+}
+.ev-detail-time-review-wrapper .ev-heading-separator{
+	margin-bottom: 20px;
 }

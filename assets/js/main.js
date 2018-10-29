@@ -170,18 +170,23 @@ $( document ).ready(function() {
     });
 
     if (localStorage.getItem('roomDetails')){
-        var roomDetailsData = JSON.parse((localStorage.getItem('roomDetails'))); 
+        var roomDetailsData = JSON.parse((localStorage.getItem('roomDetails')));
+        console.log(roomDetailsData);
         var description= roomDetailsData.description;
         var spaceName=roomDetailsData.name;
         var address1=roomDetailsData.spaceId.address1;
         var address2=roomDetailsData.spaceId.address2;
         var amenities= roomDetailsData.amenities;
+        var roomsslotscheduleTemp = roomDetailsData.roomsslotschedule;
 
         /* Title */ 
         var temp_html =  
         '<h1 >'+spaceName+'</h1>'+
         '<p class="ev-sec-txt">'+address1+' , '+address2+'</p>';
         $("#space_detail_banner_head").append(temp_html); 
+
+        /* Head  Description*/ 
+        $(".ev-space-detail-descp-head").append(''+spaceName+''); 
 
         /* Description */ 
         var temp_html =  
@@ -191,7 +196,6 @@ $( document ).ready(function() {
        /* Amenities */ 
         for (var i = amenities.length - 1; i >= 0; i--) {
             var temp_html =  
-            '<div class="row ev-adv-sec-row">'+
                 '<div class="col-md-4 col-sm-6">'+
                     '<div class="row">'+
                         '<div class="col-md-3 col-sm-3 col-3">'+
@@ -202,9 +206,28 @@ $( document ).ready(function() {
                             '<p class="ev-adv-body">Great building amenities covering all the required amenities.</p>'+
                         '</div>'+
                     '</div> '+
-                '</div>'+
-            '</div>';
-            $("#ev-hotdsk-aminities-data").append(temp_html);    
+                '</div>';
+            $("#ev-hotdsk-aminities-data .ev-adv-sec-row").append(temp_html);    
+        }
+
+        /* Time schedules */ 
+        for (var i = roomsslotscheduleTemp.length - 1; i >= 0; i--) {
+            var startMinutesTemp = roomsslotscheduleTemp[i].startTimeMinutes/60;
+            var endMinutesTemp = roomsslotscheduleTemp[i].endTimeMinutes/60;
+            if (startMinutesTemp == 0 && endMinutesTemp == 0){
+                 var temp_html =  
+                '<div class="ev-detail-time">'+
+                    ''+roomsslotscheduleTemp[i].day+': CLOSED'
+                '</div>';
+            }
+            else{
+                 var temp_html =  
+                '<div class="ev-detail-time">'+
+                    ''+roomsslotscheduleTemp[i].day+': '+startMinutesTemp+' AM TO '+endMinutesTemp+' PM'
+                '</div>';
+            }
+            
+            $("#ev-center-timing").append(temp_html);    
         }
     }  
     
