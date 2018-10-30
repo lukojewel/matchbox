@@ -1002,3 +1002,6 @@ a.ev-sec-btn:hover {
 .ev-detail-time-review-wrapper .ev-heading-separator{
 	margin-bottom: 20px;
 }
+.ev-list-head{
+	background: #343434 !important;
+}
